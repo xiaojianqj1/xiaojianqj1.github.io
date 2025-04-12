@@ -9,24 +9,8 @@
     <script>
         // 使用异步函数获取文本内容
         async function fetchText() {
-            try {
-                // 替换为你的TXT文件原始地址
-                const response = await fetch('https://raw.githubusercontent.com/xiaojianqj1/xiaojianqj1.github.io/refs/heads/main/%E6%B7%B1%E6%B8%8A%E6%8E%92%E9%98%9F%E5%BA%8F%E5%8F%B7.txt');
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+            document.write('<font color="red" size="27";> 20号</font>')
                 }
-                
-                const text = await response.text();
-                
-                // 在这里处理获取到的文本内容
-                console.log(text);
-                document.getElementById('content').innerText = text;
-                
-            } catch (error) {
-                console.log('获取文件失败:');
-            }
-        }
         
         // 页面加载完成后执行
         window.onload = fetchText;
