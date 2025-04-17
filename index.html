@@ -1,24 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>群排队序号</title>
+  <title>Supabase Demo</title>
 </head>
-<style>
-body{
-    font-family:"YouYuan"
-
-}
-</style>
 <body>
-<h1 style="color: pink"><span style="color: lightblue;">目前直播间状态</span>未开播</h1>
-    <h1 style="color: lightblue"><span style="color: pink;">如需开播</span>可直接群里@群主开播</h1>
-    <h1 style="color: lightblue"><span style="color: pink;">4</span>月<span style="color: pink;">真境剧诗</span></h1>
-    <h1 style="color: lightblue">当前深渊群排队序号：</h1>
-    <h2 style="color: pink">27号</h2>
-    <h1 style="color: lightblue"><span style="color: pink;">4</span>月<span style="color: pink;">深境螺旋</span></h1>
-    <h1 style="color: lightblue">当前深渊群排队序号：</h1>
-    <h2 style="color: pink">01号</h2>
+  <div id="data"></div>
+
+  <!-- 加载 Supabase 库 -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  
+  <script>
+    // 初始化客户端
+    const supabase = supabase.createClient(
+      'https://quxuwngscezzjgnuhnwq.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1eHV3bmdzY2V6empnbnVobndxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ4NzAwNDEsImV4cCI6MjA2MDQ0NjA0MX0.CtOJimzR4H27NVjkXBOvDA0CRPX5xdAozGK5Xe61KOA'
+    );
+
+    // 使用示例
+    async function loadData() {
+      const { data } = await supabase
+        .from('stream')
+        .select('*')
+        .limit(1);
+      
+      document.getElementById('data').textContent = JSON.stringify(data);
+    }
+
+    loadData();
+  </script>
 </body>
 </html>
