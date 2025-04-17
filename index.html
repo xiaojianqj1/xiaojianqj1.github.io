@@ -12,72 +12,13 @@ body{
 }
 </style>
 <body>
-<!-- 新增初始化函数和本地存储功能 -->
 <h1 style="color: pink"><span style="color: lightblue;">目前直播间状态</span>未开播</h1>
-<h1 style="color: lightblue"><span style="color: pink;">如需开播</span>可直接群里@群主开播</h1>
-
-<h1 style="color: lightblue"><span style="color: pink;">4</span>月<span style="color: pink;">真境剧诗</span></h1>
-<h1 style="color: lightblue">当前深渊群排队序号：</h1>
-<h2 style="color: pink" id="queue1">27号</h2>
-<input 
-  type="number" 
-  min="1" 
-  placeholder="输入新序号" 
-  style="margin:5px; border:2px solid lightblue"
-  id="input1"
->
-<button 
-  onclick="updateQueue(1)"
-  style="background:pink; color:white; border:none; padding:5px 10px; border-radius:3px"
->修改序号</button>
-
-<h1 style="color: lightblue"><span style="color: pink;">4</span>月<span style="color: pink;">深境螺旋</span></h1>
-<h1 style="color: lightblue">当前深渊群排队序号：</h1>
-<h2 style="color: pink" id="queue2">01号</h2>
-<input 
-  type="number" 
-  min="1" 
-  placeholder="输入新序号" 
-  style="margin:5px; border:2px solid lightblue"
-  id="input2"
->
-<button 
-  onclick="updateQueue(2)"
-  style="background:pink; color:white; border:none; padding:5px 10px; border-radius:3px"
->修改序号</button>
-
-<script>
-// 页面加载时初始化序号
-document.addEventListener('DOMContentLoaded', function() {
-  // 初始化第一个队列
-  const saved1 = localStorage.getItem('queue1');
-  if(saved1) {
-    document.getElementById('queue1').textContent = `${saved1.padStart(2, '0')}号`;
-  }
-
-  // 初始化第二个队列
-  const saved2 = localStorage.getItem('queue2');
-  if(saved2) {
-    document.getElementById('queue2').textContent = `${saved2.padStart(2, '0')}号`;
-  }
-});
-
-function updateQueue(type) {
-  const input = document.getElementById(`input${type}`);
-  const queue = document.getElementById(`queue${type}`);
-  
-  if (input.value && Number(input.value) > 0) {
-    const num = input.value.padStart(2, '0');
-    
-    // 更新显示并存储到本地
-    queue.textContent = `${num}号`;
-    localStorage.setItem(`queue${type}`, num);
-    
-    input.value = '';
-  } else {
-    alert('请输入有效的序号数字');
-  }
-}
-</script>
+    <h1 style="color: lightblue"><span style="color: pink;">如需开播</span>可直接群里@群主开播</h1>
+    <h1 style="color: lightblue"><span style="color: pink;">4</span>月<span style="color: pink;">真境剧诗</span></h1>
+    <h1 style="color: lightblue">当前深渊群排队序号：</h1>
+    <h2 style="color: pink">27号</h2>
+    <h1 style="color: lightblue"><span style="color: pink;">4</span>月<span style="color: pink;">深境螺旋</span></h1>
+    <h1 style="color: lightblue">当前深渊群排队序号：</h1>
+    <h2 style="color: pink">01号</h2>
 </body>
 </html>
