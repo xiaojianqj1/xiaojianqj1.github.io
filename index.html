@@ -1,32 +1,470 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Supabase Demo</title>
+<!-- saved from url=(0043)http://127.0.0.1:5500/js/lesson2/index.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>钱珺 - 个人简历</title>
+    <link rel="stylesheet" href="./钱珺 - 个人简历_files/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #e0f7fa, #f5f5f5);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: linear-gradient(120deg, #1a237e, #283593);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 400;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 25px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-item i {
+            font-size: 1.2rem;
+            color: #80deea;
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item a:hover {
+            color: #80deea;
+            text-decoration: underline;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #1a237e;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #80deea;
+            display: inline-block;
+        }
+        
+        h3 {
+            color: #283593;
+            margin: 20px 0 10px;
+            font-size: 1.3rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        th {
+            background-color: #e3f2fd;
+            text-align: left;
+            padding: 12px 15px;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover td {
+            background-color: #f5f5f5;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        ul li::before {
+            content: "•";
+            color: #1a237e;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        ol {
+            counter-reset: item;
+        }
+        
+        ol li {
+            counter-increment: item;
+        }
+        
+        ol li::before {
+            content: counter(item) ".";
+            color: #1a237e;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .intro-text {
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .skill-tag {
+            background: #e3f2fd;
+            color: #1a237e;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background: #bbdefb;
+            transform: scale(1.05);
+        }
+        
+        .education-item, .experience-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 3px solid #bbdefb;
+        }
+        
+        .date {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section {
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+    </style>
 </head>
 <body>
-  <div id="data"></div>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>钱珺</h1>
+                <p class="title">学生| XX职业</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-venus-mars"></i>
+                        <span>性别：男</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:17321206402">17321206402</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:xiaojianqj@163.com">xiaojianqj@163.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-birthday-cake"></i>
+                        <span>生日：2002.06.13</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-heart"></i>
+                        <span>兴趣：打游戏</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <div class="section" style="animation: 0.8s ease 0s 1 normal forwards running fadeIn;">
+                <h2><i class="fas fa-user-graduate"></i> 教育背景</h2>
+                
+                <div class="education-item">
+                    <div class="date">2020 - 2025</div>
+                    <h3>经济学 | 学士学位</h3>
+                    <p>上海对外经贸大学</p>
+                </div>
+                
+                <div class="education-item">
+                    <div class="date">2017 - 2020</div>
+                    <h3>高中</h3>
+                    <p>上海市宜川中学</p>
+                </div>
+            </div>
+            
+            <div class="section" style="animation: 0.8s ease 0s 1 normal forwards running fadeIn;">
+                <h2><i class="fas fa-briefcase"></i> 工作经验</h2>
+                
+                <div class="experience-item">
+                    <div class="date">2023.06 - 2023.12</div>
+                    <h3>Xxxx</h3>
+                    <p>Xxxx公司</p>
+                    <ul>
+                        <li>xxx</li>
+                        <li>xxxx</li>
+                        <li>xxx</li>
+                        <li>xxx</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="date">2022.07 - 2022.09</div>
+                    <h3>xxxx助理</h3>
+                    <p>xxxxx工作室</p>
+                    <ul>
+                        <li>xxxx</li>
+                        <li>xxxx</li>
+                        <li>xxx</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section" style="animation: 0.8s ease 0s 1 normal forwards running fadeIn;">
+                <h2><i class="fas fa-code"></i> 专业技能</h2>
+                
+                <h3>编程语言</h3>
+                <div class="skills">
+                    <div class="skill-tag">JavaScript</div>
+                    <div class="skill-tag">HTML5</div>
+                    <div class="skill-tag">C#</div>
+                    <div class="skill-tag">Python</div>
+                    <div class="skill-tag">Java</div>
+                </div>
+                
+                <h3>框架与库</h3>
+                <div class="skills">
+                    <div class="skill-tag">XX</div>
+                    <div class="skill-tag">XX</div>
+                    <div class="skill-tag">xxxx</div>
+                    <div class="skill-tag">xxxxx</div>
+                </div>
+                
+                <h3>工具与技术</h3>
+                <div class="skills">
+                    <div class="skill-tag">Git</div>
+                    <div class="skill-tag">Node.js</div>
+                    <div class="skill-tag">XXX</div>
+                    <div class="skill-tag">xxx</div>
+                    <div class="skill-tag">XXX</div>
+                </div>
+            </div>
+            
+            <div class="section" style="animation: 0.8s ease 0s 1 normal forwards running fadeIn;">
+                <h2><i class="fas fa-user"></i> 自我介绍</h2>
+                
+                <p class="intro-text">
+                    我是一名充满激情的前端开发工程师，拥有扎实的计算机科学基础和丰富的项目经验。热爱创造直观、功能强大的用户界面，注重代码质量和用户体验。
+                </p>
+                <p class="intro-text">
+                    在校期间，我积极参与多个开源项目，并独立完成了多个网站的设计与开发。我善于团队协作，能够快速学习新技术并应用于实际项目中。对于解决复杂问题和优化性能有浓厚兴趣。
+                </p>
+                <p class="intro-text">
+                    我追求简洁优雅的设计风格，相信好的设计能够提升用户体验。工作之余，我喜欢探索新的前端技术，参加技术会议，并通过博客分享我的学习心得。
+                </p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 钱珺 - 个人简历 | 最后更新：2023年12月</p>
+        </footer>
+    </div>
 
-  <!-- 加载 Supabase 库 -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  
-  <script>
-    // 初始化客户端
-    const supabase = supabase.createClient(
-      'https://quxuwngscezzjgnuhnwq.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1eHV3bmdzY2V6empnbnVobndxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ4NzAwNDEsImV4cCI6MjA2MDQ0NjA0MX0.CtOJimzR4H27NVjkXBOvDA0CRPX5xdAozGK5Xe61KOA'
-    );
+    <script>
+        // 添加简单的滚动动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeIn 0.8s ease forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 
-    // 使用示例
-    async function loadData() {
-      const { data } = await supabase
-        .from('stream')
-        .select('*')
-        .limit(1);
-      
-      document.getElementById('data').textContent = JSON.stringify(data);
-    }
-
-    loadData();
-  </script>
-</body>
-</html>
+</body></html>
